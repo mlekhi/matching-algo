@@ -58,9 +58,10 @@ def filter_by_approved(people):
 def create_discussion_topics(person):
     interest = person.get('what_to_learn', 'general interests')
     accomplishment = person.get('proud_of', 'something recent they did')
+    aspiration = person.get('do_with_time_and_money', 'something they wish they could do')
 
     # Use the Client's chat completion API
-    prompt = f"Generate three general discussion topics that would be good to talk to someone interested in {interest} and with recent accomplishment(s): {accomplishment}. Make them each 2-6 words describing topics."
+    prompt = f"Generate three general discussion topics that would be good to talk to someone interested in {interest} with aspiration of {aspiration} and with recent accomplishment(s): {accomplishment}. Make them each 1-2 words describing topics. Be vague about the topics."
 
     response = client.chat.completions.create(  # Adjusted method call
         model="gpt-3.5-turbo",
